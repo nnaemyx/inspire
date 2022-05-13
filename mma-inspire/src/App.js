@@ -1,27 +1,25 @@
-import React from 'react';
-import Academy from "./components/Academy";
-import NavBar from "./components/Navbar/NavBar";
-import About from "./components/About";
-import CustomMade from "./components/CustomMade";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import Blog from "./components/Blog";
 import Contact from "./components/Contact";
-import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
+import About from "./components/About";
 
-const App = () => {
+export default function App() {
   return (
-    <div className='App'>
-      <NavBar />
-    <Routes>
-      <Route exact path="/academy" element={<Academy />}></Route>
-      <Route exact path="/navbar" element={<NavBar />}></Route>
-      <Route path="/about" element={<About />}></Route>
-      <Route path="/custommade" element={<CustomMade />}></Route>
-      <Route path="/contact" element={<Contact />}></Route>
-    </Routes>
-    <Footer />
-    </div>
-    
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<NavBar />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

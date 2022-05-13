@@ -1,13 +1,14 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import "./NavBar.css";
-import Logo from '../Navbar/logo1.png';
+import {Outlet, Link} from "react-router-dom";
+import "../../src/NavBar.css";
+import Logo from '../../src/logo1.png';
 
 
 
 const NavBar = () => {
   return (
-   <nav className='navbar'>
+   <>
+        <nav className='navbar'>
        <img src={Logo} alt='logo' className='logo'></img>
        <ul className='navlinks'>
            <Link to="/" className='home'>
@@ -56,7 +57,9 @@ const NavBar = () => {
            </Link>
 
        </ul>
-   </nav>
+       <Outlet/>
+   </nav>   
+   </>
   )
 }
 
